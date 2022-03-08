@@ -1,13 +1,10 @@
-
-//import 'dart:js';
-
 import 'package:flutter/material.dart'; //paquetes
 
 import 'pages/pruebaStack.dart';
 import 'pages/secondScreen.dart';
 import 'pages/datosPage.dart';
 import 'pages/stackEjemplo.dart';
-
+import 'pages/formScreen.dart';
 void main() { //llama la funcion princiapl
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -18,7 +15,8 @@ void main() { //llama la funcion princiapl
       '/second':(context) => const SecondScreeen(),
       '/datos':(context) => const DatosPage(),
       '/stack':(context) => const PruebaStack(),
-      '/pruebaStack':(context) => const StackEjemplo()
+      '/pruebaStack':(context) => const StackEjemplo(),
+      '/formScreen':(context) => const MyStateFulWidget()
 
     },
    // home: HomePage(),
@@ -84,7 +82,16 @@ class HomePage extends StatelessWidget{
                    Navigator.pushNamed(context, '/pruebaStack');
                   },
                   child: const Text('Datos Stack'),
+                ),
+                SizedBox(height: 10.0,),
+                ElevatedButton(
+                  onPressed: () {
+                    
+                   Navigator.pushNamed(context, '/formScreen');
+                  },
+                  child: const Text('Form Screen'),
                 )
+                
               ]
             ),
           ),
