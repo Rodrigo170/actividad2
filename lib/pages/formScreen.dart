@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class MyStateFulWidget extends StatefulWidget {
  const MyStateFulWidget({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class _MyStateFulWidgetState extends State<MyStateFulWidget> {
   late TextEditingController _controller; //investigar el late
 
   bool _isChecked = false;
+  
+  var maskFormatter = MaskTextInputFormatter(mask: '####-####-####-####', filter: { "#": RegExp(r'[0-9]') });
 
   @override //se pone el override para sobre escribir
   void initState() {
@@ -42,7 +45,7 @@ class _MyStateFulWidgetState extends State<MyStateFulWidget> {
              const SizedBox(height: 10),
              inputPassword(),
              const SizedBox(height: 10),
-             inputCard(),
+             inputCard(maskFormatter),
              const SizedBox(height: 10),
              Container(
                
@@ -89,7 +92,7 @@ class _MyStateFulWidgetState extends State<MyStateFulWidget> {
 
 
 
-Widget inputCard() {
+Widget inputCard(maskFormatter) {
   return  Container(
     padding: const EdgeInsets.symmetric(horizontal: 20.0), //interno
    margin: const EdgeInsets.symmetric(horizontal: 30.0), //externo
@@ -100,10 +103,11 @@ Widget inputCard() {
     child: TextField(
                    keyboardType: TextInputType.number, //numeros en el teclado
                    inputFormatters: [
-                     FilteringTextInputFormatter.allow(
+                     /*FilteringTextInputFormatter.allow(
                        RegExp('[0-9 -]')
                      ),
-                     LengthLimitingTextInputFormatter(16)
+                     LengthLimitingTextInputFormatter(16)*/
+                     maskFormatter
                    ], //reglas
                    decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.credit_card),

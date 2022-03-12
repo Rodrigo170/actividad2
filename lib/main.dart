@@ -5,6 +5,8 @@ import 'pages/secondScreen.dart';
 import 'pages/datosPage.dart';
 import 'pages/stackEjemplo.dart';
 import 'pages/formScreen.dart';
+import 'pages/cardScreen.dart';
+
 void main() { //llama la funcion princiapl
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -16,7 +18,9 @@ void main() { //llama la funcion princiapl
       '/datos':(context) => const DatosPage(),
       '/stack':(context) => const PruebaStack(),
       '/pruebaStack':(context) => const StackEjemplo(),
-      '/formScreen':(context) => const MyStateFulWidget()
+      '/formScreen':(context) => const MyStateFulWidget(),
+      '/cardScreen':(context) => const MyStateFulWidget2()
+
 
     },
    // home: HomePage(),
@@ -90,6 +94,14 @@ class HomePage extends StatelessWidget{
                    Navigator.pushNamed(context, '/formScreen');
                   },
                   child: const Text('Form Screen'),
+                ),
+                SizedBox(height: 10.0,),
+                ElevatedButton(
+                  onPressed: () {
+                    
+                   Navigator.pushNamed(context, '/cardScreen');
+                  },
+                  child: const Text('Card'),
                 )
                 
               ]
